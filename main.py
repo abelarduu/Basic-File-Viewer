@@ -1,4 +1,8 @@
+#Importações do prorio sistema
 from src import *
+from src.assets import IMG_MOON_ICON
+
+#Outras importações 
 from customtkinter import *
 from tkinter.filedialog import askopenfilename
 from random import randint
@@ -8,7 +12,7 @@ from PIL import Image
 class App:
     def __init__(self):
         type_extension=['file.txt', 'file.docx', 'file.pdf']
-        #self.ebooks_list= list([File(FRAME_FILE, type_extension[randint(0,2)]).grid(row=l, column= c, padx=15, pady=15) for l in range(4) for c in range(9)])
+        #self.ebooks_list= list([File(FRAME_FILE, type_extension[randint(0,2)]).grid(row=l, column= c, padx=20, pady=25) for l in range(4) for c in range(5)])
         for c in range(5):
             for l in range(4):
                 File(FRAME_FILE, type_extension[randint(0,2)]).grid(row=l, column= c, padx=20, pady=25)
@@ -16,6 +20,7 @@ class App:
         #Elementos do frame_bar
         btn_add_file= CTkButton(FRAME_BAR, text="selecionar", width= 50, height= 75, command= self.get_file)
         btn_del_file= CTkButton(FRAME_BAR, text="deletar", width= 75, height= 75, command= self.delete_file)
+        lbl_img_moon= CTkLabel(FRAME_BAR, image= IMG_MOON_ICON, text= None)
 
         #Switch Theme Dark
         self.switch_var = StringVar(value="off")
@@ -24,7 +29,7 @@ class App:
 
         #Agrupando elementos do frame_bar
         #Adicionando-os na tela
-        btn_bar= [btn_add_file, btn_del_file, btn_theme]
+        btn_bar= [btn_add_file, btn_del_file,lbl_img_moon, btn_theme]
         for btn in btn_bar:
             btn.pack(padx=15, pady=10)
 
