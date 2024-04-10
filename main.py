@@ -1,8 +1,5 @@
-#Importações do prorio sistema
 from src import *
-from src.assets import IMG_MOON_ICON
-
-#Outras importações 
+from src import assets
 from customtkinter import *
 from tkinter.filedialog import askopenfilename
 from random import randint
@@ -18,9 +15,9 @@ class App:
                 File(FRAME_FILE, type_extension[randint(0,2)]).grid(row=l, column= c, padx=20, pady=25)
                 
         #Elementos do frame_bar
-        btn_add_file= CTkButton(FRAME_BAR, text="selecionar", width= 50, height= 75, command= self.get_file)
-        btn_del_file= CTkButton(FRAME_BAR, text="deletar", width= 75, height= 75, command= self.delete_file)
-        lbl_img_moon= CTkLabel(FRAME_BAR, image= IMG_MOON_ICON, text= None)
+        btn_add_file= CTkButton(FRAME_BAR,image= assets.BTN_IMPORT_ICON, text=None, width= 50, height= 75, command= self.get_file)
+        btn_del_file= CTkButton(FRAME_BAR,image= assets.BTN_DELETE_ICON, text=None, width= 75, height= 75, command= self.delete_file)
+        lbl_img_moon= CTkLabel(FRAME_BAR, image= assets.IMG_MOON_ICON, text= None)
 
         #Switch Theme Dark
         self.switch_var = StringVar(value="off")
@@ -56,6 +53,8 @@ class App:
 
     def delete_file(self):
         dialog = CTkInputDialog(text="Nome do Arquivo:", title="Remover Arquivo")
+        title_file= dialog.get_input()
+        print(title_file)
 
     def run(self):
         MASTER.mainloop()
