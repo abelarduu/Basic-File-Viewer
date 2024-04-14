@@ -8,13 +8,18 @@ from pathlib import Path
 
 class File(CTkButton):
     def __init__(self, master, file_path):
-        super().__init__(master, text= Path(file_path).stem, width= 200, height= 230, compound= "top", command= self.view)
-        self.file_path= file_path
-        self.file_extension= splitext(self.file_path)[1]
+        super().__init__(master, text= self.handle_title(file_path), width= 200, height= 230, compound= "top", command= self.view)
+        self.file_path= Path(file_path)
+        self.file_extension= self.file_path.suffix
         if self.file_extension == ".pdf": self.configure(fg_color= "#D9304F", image= IMG_PDF_ICON, hover_color="#a0233a")
         elif self.file_extension == ".docx": self.configure(fg_color= "#C3D4F1", image= IMG_DOC_ICON, hover_color="#8e9ebb")
         elif self.file_extension == ".txt": self.configure(fg_color= "#FFFFFF", image= IMG_TXT_ICON, hover_color="#b4b4b4")
 
+    def handle_title(self, title):
+        if len(Path(title).name) <30:
+            return Path(title).name
+        else:
+            return Path(title).name[0:30] + '.'*3 
     def view(self):
         #Processando/Carregando o File
         #Criando uma janela para visualização
@@ -29,7 +34,7 @@ class File(CTkButton):
         frame.pack(fill="both", expand= True)
         for img in imgs:
             lbl_img = CTkLabel(frame, text=None, image=img)
-            lbl_img.pack(fill=BOTH, expand=True)    
+            lbl_img.pack(fill=BOTH, expand=True)
             new_master.after(100, new_master.lift)
 
     '''

@@ -6,7 +6,7 @@ from os import getcwd
 
 class App:
     def __init__(self):
-        self.file_list= []
+        self.file_list= tuple()
         #Elementos do frame_bar
         btn_add_file= CTkButton(FRAME_BAR,image= assets.BTN_IMPORT_ICON, text=None, width= 50, height= 75, command= self.add_file)
         btn_del_file= CTkButton(FRAME_BAR,image= assets.BTN_DELETE_ICON, text=None, width= 75, height= 75, command= self.delete_file)
@@ -44,7 +44,7 @@ class App:
                                           ("All File", '*')))
 
         new_file= File(FRAME_FILE, filedir)
-        self.file_list.append(new_file)
+        self.file_list= self.file_list + (new_file,)
         MASTER.after(10, self.draw_files)
 
     def delete_file(self):
