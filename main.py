@@ -2,20 +2,13 @@ from src import *
 from src import assets
 from customtkinter import *
 from tkinter.filedialog import askopenfilename
-from random import randint
 from os import getcwd
-from PIL import Image
 
 class App:
     def __init__(self):
-        type_extension=['file.txt', 'file.docx', 'file.pdf']
-        #self.ebooks_list= list([File(FRAME_FILE, type_extension[randint(0,2)]).grid(row=l, column= c, padx=20, pady=25) for l in range(4) for c in range(5)])
-        for c in range(5):
-            for l in range(4):
-                File(FRAME_FILE, type_extension[randint(0,2)]).grid(row=l, column= c, padx=20, pady=25)
-                
+        self.file_list= []
         #Elementos do frame_bar
-        btn_add_file= CTkButton(FRAME_BAR,image= assets.BTN_IMPORT_ICON, text=None, width= 50, height= 75, command= self.get_file)
+        btn_add_file= CTkButton(FRAME_BAR,image= assets.BTN_IMPORT_ICON, text=None, width= 50, height= 75, command= self.add_file)
         btn_del_file= CTkButton(FRAME_BAR,image= assets.BTN_DELETE_ICON, text=None, width= 75, height= 75, command= self.delete_file)
         lbl_img_moon= CTkLabel(FRAME_BAR, image= assets.IMG_MOON_ICON, text= None)
 
@@ -35,7 +28,7 @@ class App:
             MASTER.dark_theme()
         else:MASTER.clear_theme()
 
-    def get_file(self) -> str:
+    def add_file(self):
         '''
         Definindo:
             -Diretorio inicial do explorador de arquivos
@@ -49,13 +42,25 @@ class App:
                                           ("Doc file",".docx"),
                                           ("Text file",".txt"),
                                           ("All File", '*')))
-        return filedir
+
+        new_file= File(FRAME_FILE, filedir)
+        self.file_list.append(new_file)
+        MASTER.after(10, self.draw_files)
 
     def delete_file(self):
         dialog = CTkInputDialog(text="Nome do Arquivo:", title="Remover Arquivo")
         title_file= dialog.get_input()
         print(title_file)
 
+    def draw_files(self):
+        index=0
+        for l in range(5):
+            for c in range(4):
+                try:
+                    self.file_list[index].grid(row=l, column= c, padx=20, pady=25)
+                    index+=1
+                except IndexError: pass
+                
     def run(self):
         MASTER.mainloop()
 
