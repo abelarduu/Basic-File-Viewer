@@ -42,10 +42,10 @@ class App:
                                           ("Doc file",".docx"),
                                           ("Text file",".txt"),
                                           ("All File", '*')))
-
-        new_file= File(FRAME_FILE, filedir)
-        self.file_list= self.file_list + (new_file,)
-        MASTER.after(10, self.draw_files)
+        if not filedir == "":
+            new_file= File(FRAME_FILE, filedir)
+            self.file_list= self.file_list + (new_file,)
+            MASTER.after(10, self.draw_files)
 
     def delete_file(self):
         dialog = CTkInputDialog(text="Nome do Arquivo:", title="Remover Arquivo")
@@ -54,13 +54,13 @@ class App:
 
     def draw_files(self):
         index=0
-        for l in range(5):
-            for c in range(4):
+        for line in range(len(self.file_list)):
+            for column in range(5):
                 try:
-                    self.file_list[index].grid(row=l, column= c, padx=20, pady=25)
+                    self.file_list[index].grid(row=line, column= column, padx=20, pady=25)
                     index+=1
                 except IndexError: pass
-                
+ 
     def run(self):
         MASTER.mainloop()
 
