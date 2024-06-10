@@ -1,9 +1,10 @@
 from src.file import File
 from src.window import Window
+from src.database import Database
 from customtkinter import *
 
+DB= Database()
 MASTER= Window(870,530,"Basic File Viewer", True)
-
 #FRAMES
 #READER
 READER= CTkFrame(MASTER,height= 100, fg_color= "#3264A6", corner_radius=0)
