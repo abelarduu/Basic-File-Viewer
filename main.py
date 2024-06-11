@@ -59,7 +59,8 @@ class App:
     def delete_file(self):
         dialog = CTkInputDialog(text="Nome do Arquivo:", title="Remover Arquivo")
         title_file= dialog.get_input()
-        #print(title_file)
+        DB.delete_data(title_file)
+        MASTER.after(10, self.draw_files)
  
     def run(self):
         MASTER.after(10, self.draw_files)

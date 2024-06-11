@@ -31,12 +31,18 @@ class Database:
             self.con.rollback()
             raise err
             
-    def get_datas(self):
+    def get_datas(self) -> list:
         try:
             self.cur.execute("""SELECT * FROM Files""")
             return self.cur.fetchall()
         except Exception as err:
             self.con.rollback()
             raise err
-        
-    #delete_data(data)
+            
+    def delete_data(self, data):
+        try:
+            self.cur.execute("""DELETE FROM Files WHERE Title = ? """, (data,))
+            self.con.commit()
+        except Exception as err:
+            self.con.rollback()
+            raise err
