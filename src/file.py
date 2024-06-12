@@ -9,8 +9,8 @@ class File(CTkButton):
     def __init__(self, master, file_path):
         super().__init__(master, text= self.get_title(file_path), width= 200, height= 230, compound= "top", command= self.view)
         self.path= Path(file_path)
-        self.title= Path(file_path).name
-        self.extension= self.path.suffix
+        self.title= Path(self.path).name
+        self.extension= Path(self.path).suffix
         
         #Padronizando cor para PDF/Docx/Txt
         if self.extension == ".pdf": 
@@ -64,9 +64,3 @@ class File(CTkButton):
             img_ctk = CTkImage(light_image=img, size=(img.width, img.height))
             imgs.append(img_ctk)
         return imgs
-
-    def delete(self):
-        pass
-     #if ebook.title == titleEntry.get(): 
-     #    app.listEbook.remove(ebook)
-             

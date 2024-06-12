@@ -6,7 +6,6 @@ from os import getcwd
 
 class App:
     def __init__(self):
-        self.file_list= tuple()
         #Elementos do frame_bar
         btn_add_file= CTkButton(FRAME_BAR, image= BTN_IMPORT_ICON, text=None, width= 50, height= 75, command= self.add_file)
         btn_del_file= CTkButton(FRAME_BAR, image= BTN_DELETE_ICON, text=None, width= 75, height= 75, command= self.delete_file)
@@ -28,11 +27,12 @@ class App:
     
     def draw_files(self):
         index=0
+        path_index= 2
         files_list= DB.get_datas()
         for line in range(len(files_list)):
             for column in range(5):
                 try:
-                    new_file= File(FRAME_FILE, files_list[index][1])
+                    new_file= File(FRAME_FILE, files_list[index][path_index])
                     new_file.grid(row=line, column= column, padx=20, pady=25)
                     index+=1
                 except IndexError: pass
