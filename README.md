@@ -13,10 +13,7 @@ O Basic File Viewer é um aplicativo simples e direto para visualização de arq
  [![Pillow V.10.0.1](https://img.shields.io/badge/Pillow-V.10.0.1-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/python-pillow/Pillow)
  
 ### Resultado
-<figure>
- <img src="img/interface.png" type="image/png" alt="Interface Theme Padrão" height=360>
-</figure>
-<figure>
- <img src="img/interface_p2.png" type="image/png" alt="Interface Theme Dark" height=360>
-</figure>
+ <img src="img/interface.gif" type="image/gif" alt="Interface Themes" height=460>
+ <img src="img/interface.png" type="image/png" alt="Interface Theme Padrão" height=235>
+ <img src="img/interface_p2.png" type="image/png" alt="Interface Theme Dark" height=235>
 </div>
