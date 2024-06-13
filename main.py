@@ -55,7 +55,7 @@ class App:
             new_file= File(FRAME_FILE, filedir)
             DB.add_data((new_file.title , str(new_file.path), new_file.extension))
             MASTER.after(10, self.draw_files)
-
+            
     def delete_file(self):
         dialog = CTkInputDialog(text="Nome do Arquivo:", title="Remover Arquivo")
         title_file= dialog.get_input()

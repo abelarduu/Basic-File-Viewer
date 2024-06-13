@@ -4,7 +4,6 @@ from pathlib import Path
 from PIL import Image
 import fitz
 
-
 class File(CTkButton):
     def __init__(self, master, file_path):
         super().__init__(master, text= self.get_title(file_path), width= 200, height= 230, compound= "top", command= self.view)
@@ -43,7 +42,7 @@ class File(CTkButton):
         for img in imgs:
             lbl_img = CTkLabel(frame, text=None, image=img)
             lbl_img.pack(fill=BOTH, expand=True)
-            new_master.after(100, new_master.lift)
+            new_master.after(10, new_master.lift)
 
     '''
     CONVERT_PAGES_TO_IMAGES:

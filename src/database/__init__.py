@@ -12,14 +12,6 @@ class Database:
                                 title VARCHAR(100),
                                 file_path VARCHAR(150),
                                 file_extension VARCHAR(5))""")
-                                
-    def query(self, query: str, data= tuple()):
-        try:
-            self.cur.execute(query, data)
-            self.con.commit()
-        except Exception as err:
-            self.con.rollback()
-            raise err
             
     def add_data(self, data: tuple):
         try:
@@ -46,3 +38,4 @@ class Database:
         except Exception as err:
             self.con.rollback()
             raise err
+
