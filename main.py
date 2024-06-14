@@ -28,9 +28,11 @@ class App:
     def draw_files(self):
         index=0
         path_index= 2
+        max_columns = 5
+
         files_list= DB.get_datas()
         for line in range(len(files_list)):
-            for column in range(5):
+            for column in range(max_columns):
                 try:
                     new_file= File(FRAME_FILE, files_list[index][path_index])
                     new_file.grid(row=line, column= column, padx=20, pady=25)
