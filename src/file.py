@@ -22,10 +22,10 @@ class File(CTkButton):
             self.configure(fg_color= "#FFFFFF", image= IMG_TXT_ICON, hover_color="#b4b4b4")
 
     def get_title(self, title) -> str:
-        if len(Path(title).name) <30:
-            return Path(title).name
+        if len(Path(title).name) <28:
+            return Path(title).name.lower()
         else:
-            return Path(title).name[0:30] + '.'*3 
+            return Path(title).name[0:28].lower() + '.'*3 
 
     def view(self):
         #Processando/Carregando o File

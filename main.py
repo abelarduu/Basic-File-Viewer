@@ -26,18 +26,17 @@ class App:
         else:MASTER.clear_theme()
     
     def draw_files(self):
-        index=0
-        path_index= 2
+        path_index = 2
         max_columns = 5
-
-        files_list= DB.get_datas()
-        for line in range(len(files_list)):
-            for column in range(max_columns):
-                try:
-                    new_file= File(FRAME_FILE, files_list[index][path_index])
-                    new_file.grid(row=line, column= column, padx=20, pady=25)
-                    index+=1
-                except IndexError: pass
+        files_list = DB.get_datas()
+        
+        #Iteração com a lista de Files
+        for index,file in enumerate(files_list):
+            row = index // max_columns
+            column = index % max_columns
+            new_file = File(FRAME_FILE, file[path_index])
+            new_file.grid(row=row, column=column, padx=20, pady=25)
+            index += 1
 
     def add_file(self):
         #Importando Ebooks/PDF
