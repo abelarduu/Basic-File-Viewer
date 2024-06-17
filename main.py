@@ -36,7 +36,6 @@ class App:
             column = index % max_columns
             new_file = File(FRAME_FILE, file[path_index])
             new_file.grid(row=row, column=column, padx=20, pady=25)
-            index += 1
 
     def add_file(self):
         #Importando Ebooks/PDF
