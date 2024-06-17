@@ -55,11 +55,14 @@ class File(CTkButton):
     ''' 
     def convert_pages_to_images(self) -> list:
         imgs= []
-        doc = fitz.open(self.path)
-        for page_number in range(len(doc)):
-            page = doc.load_page(page_number)
-            pix = page.get_pixmap()
-            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
-            img_ctk = CTkImage(light_image=img, size=(img.width, img.height))
-            imgs.append(img_ctk)
-        return imgs
+        if self.path.exists():
+            doc = fitz.open(self.path)
+            for page_number in range(len(doc)):
+                page = doc.load_page(page_number)
+                pix = page.get_pixmap()
+                img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+                img_ctk = CTkImage(light_image=img, size=(img.width, img.height))
+                imgs.append(img_ctk)
+            return imgs
+        else: 
+            self.destroy()
