@@ -1,7 +1,10 @@
+from src.assets import *
 from src.file import File
 from src.window import Window
 from src.database import Database
+from tkinter.filedialog import askopenfilename
 from customtkinter import *
+from os import getcwd
 
 DB= Database()
 MASTER= Window(870,530,"Basic File Viewer", True)

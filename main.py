@@ -1,8 +1,4 @@
 from src import *
-from src.assets import *
-from customtkinter import *
-from tkinter.filedialog import askopenfilename
-from os import getcwd
 
 class App:
     def __init__(self):
