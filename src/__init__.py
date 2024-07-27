@@ -10,9 +10,9 @@ DB = Database()
 MASTER = Window(870, 530, "Basic File Viewer", True)
 
 # Frames da interface
-# READER
-READER = CTkFrame(MASTER, height=100, fg_color="#3264A6", corner_radius=0)
-READER.grid(row=1, column=1, columnspan=5, sticky='nsew')
+# FRAME_READER
+FRAME_READER = CTkFrame(MASTER, height=100, fg_color="#3264A6", corner_radius=0)
+FRAME_READER.grid(row=1, column=1, columnspan=5, sticky='nsew')
 
 # FRAME DE BARRA
 FRAME_BAR = CTkFrame(MASTER, width=100, fg_color="#205191", corner_radius=0)

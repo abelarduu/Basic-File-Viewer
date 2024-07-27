@@ -4,6 +4,10 @@ from tkinter.filedialog import askopenfilename
 class App:
     def __init__(self):
         """Inicializa a aplicação e define os botões da interface."""
+        # Logo do app
+        icon = CTkLabel(FRAME_READER, image=IMG_LOGO, text=None)
+        icon.pack(pady=10)
+        
         # Elementos do frame_bar
         btn_add_file = CTkButton(FRAME_BAR, image=BTN_IMPORT_ICON, text=None, width=50, height=75, command=self.add_file)
         btn_del_file = CTkButton(FRAME_BAR, image=BTN_DELETE_ICON, text=None, width=75, height=75, command=self.delete_file)
